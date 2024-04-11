@@ -533,14 +533,14 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>if "$(ConfigurationName)" == "Standalone" (
-"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)Properties\AssemblyInfo.tt"
-"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)modinfo.tt"
-)
-if "$(ConfigurationName)" == "SRML" (
-"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)Properties\AssemblyInfo.tt"
-"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)modinfo.tt"
-)</PreBuildEvent>
+  <PropertyGroup Condition=" '$(OS)' != 'Windows_NT'">
+    <DevEnvDir>/usr/lib/monodevelop/AddIns/MonoDevelop.TextTemplating/</DevEnvDir>
+    <TextTransformPrefix>/bin/bash -c </TextTransformPrefix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Standalone' Or '$(Configuration)' == 'SRML' ">
+    <PreBuildEvent>
+      $(TextTransformPrefix)"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)Properties\AssemblyInfo.tt"
+      $(TextTransformPrefix)"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)modinfo.tt"
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
