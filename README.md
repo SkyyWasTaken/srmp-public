@@ -1,6 +1,9 @@
 # srmp-public
 This is the code for the Slime Rancher MultiPlayer Mod (SRMP) by SatyPardus.
 
+Note: I am not the original developer, but am maintaining the repo for the time being.
+This is the original readme, as written by @SatyPardus
+
 You can join our discord here: https://discord.gg/Qp8SmuQ 
 
 Check out the #srmp-github channel for collaboration!
