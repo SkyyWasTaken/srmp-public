@@ -535,12 +535,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(OS)' != 'Windows_NT'">
     <DevEnvDir>/usr/lib/monodevelop/AddIns/MonoDevelop.TextTemplating/</DevEnvDir>
-    <TextTransformPrefix>/bin/bash -c </TextTransformPrefix>
+    <TextTransformPrefix>/bin/bash -c '</TextTransformPrefix>
+    <TextTransformSuffix>'</TextTransformSuffix>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Standalone' Or '$(Configuration)' == 'SRML' ">
     <PreBuildEvent>
-      $(TextTransformPrefix)"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)Properties\AssemblyInfo.tt"
-      $(TextTransformPrefix)"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)modinfo.tt"
+      $(TextTransformPrefix)"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)Properties\AssemblyInfo.tt"$(TextTransformSuffix)
+      $(TextTransformPrefix)"$(DevEnvDir)TextTransform.exe" "$(ProjectDir)modinfo.tt"$(TextTransformSuffix)
     </PreBuildEvent>
   </PropertyGroup>
 </Project>
